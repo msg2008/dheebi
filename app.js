@@ -1,29 +1,27 @@
-// Firebase Configuration - YOU NEED TO REPLACE THIS WITH YOUR OWN FIREBASE CONFIG
-// Visit https://console.firebase.google.com/ to create a project
+// Firebase Configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDRlBr82rM5HeGrK4VO8OyYxgXIE36BZVE",
+    authDomain: "deebichat-e80c4.firebaseapp.com",
+    databaseURL: "https://deebichat-e80c4-default-rtdb.firebaseio.com",
+    projectId: "deebichat-e80c4",
+    storageBucket: "deebichat-e80c4.firebasestorage.app",
+    messagingSenderId: "466764715803",
+    appId: "1:466764715803:web:957d6bbeb8aa9b717b25be",
+    measurementId: "G-LNVVXMCT1C"
 };
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, push, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
 
-// Initialize Firebase (only if config is provided)
-let db;
-let messagesRef;
-const isConfigured = firebaseConfig.apiKey !== "YOUR_API_KEY";
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const analytics = getAnalytics(app);
+const messagesRef = ref(db, 'messages');
 
-if (isConfigured) {
-    const app = initializeApp(firebaseConfig);
-    db = getDatabase(app);
-    messagesRef = ref(db, 'messages');
-}
+const isConfigured = true; // Set to true as we now have config
 
 // Select Elements
 const loginScreen = document.getElementById('login-screen');
